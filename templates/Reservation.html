@@ -29,7 +29,7 @@
  <!-- ======= Form Section ======= -->
   <section id="con" class="con">
     <form action="{% url 'Reservation' %}" method="post">
-        {% csrf_token %}
+        {% comment %} {% csrf_token %} {% endcomment %}
         <input type="hidden" name="Form" value="{{ request.path }}">
         <div class="title">
             <h2>MAKE YOUR RESERVATION NOW</h2>
