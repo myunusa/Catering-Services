@@ -97,7 +97,7 @@
         <div class="row footer-newsletter justify-content-center">
           <div class="col-lg-6">
             <form action="{% url 'Newsletter' %}" method="POST">
-              {% comment %} {% csrf_token %} {% endcomment %}
+              
               <input type="hidden" name="News" value="{{ request.path }}">
               <input type="email" name="Email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
             </form>
