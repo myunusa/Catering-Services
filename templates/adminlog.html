@@ -28,7 +28,7 @@
  <!-- ======= Form Section ======= -->
   <section id="con" class="con">
     <form action="{% url 'Adminlog' %}" method="post">
-        {% csrf_protect %}
+        {% csrf_token %}
         <input type="hidden" name="log" value="{{ request.path }}">
         <div class="title">
             <h2>Login Page</h2>

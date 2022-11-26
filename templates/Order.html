@@ -30,7 +30,7 @@
    <!-- ======= Form Section ======= -->
   <section id="con" class="con">
     <<form action="{% url 'Order' %}" method="post">
-      {% csrf_protect %}
+      {% csrf_token %}
       <input type="hidden" name="Form" value="{{ request.path }}">
         <div class="title">
             <h2>MAKE YOUR ORDER NOW</h2>
