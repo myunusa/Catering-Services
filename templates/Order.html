@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Title %}ORDER{% endblock Title %}
+{% block meallink %}
+              <li class="dropdown"><a class="nav-link scrollto" href="{% url 'Meals' %}"><span>Meals</span> <i class="bi bi-chevron-down"></i></a>
+{% endblock meallink %}
+{% block contect %}
+  {% block Banner %}
+  <!-- ======= Banner Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      {% block Welcome %}
+      {% if messages %}
+      {% for messag in messages %}
+       <div class="sent-messages"><h2>{{messag}}</h2></div>
+      {% endfor %}
+     {% endif %}
+      <h1>Welcome to Catering Services Order page</h1>
+      <h2>You can make your Order or click on the make reservation  to reserve for the product you need.<br/><br/>
+        <a class="nav-link scrollto" href="#con">
+        <b style=color:#ffc451>SCROLL DROWN TO MAKE YOUR ORDER</b></a></h2>
+      <div id="gets" class="gets">
+        <a href="{% url 'Reservation' %}" class="btn-get-started scrollto" style=text-align:center>MAKE RESSERVATION</a>
+      </div>
+      {% endblock Welcome %}
+    </div>
+  </section>
+  <!-- End Banner -->
+  {% endblock Banner %}
+   <!-- ======= Form Section ======= -->
+  <section id="con" class="con">
+    <<form action="{% url 'Order' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="Form" value="{{ request.path }}">
+        <div class="title">
+            <h2>MAKE YOUR ORDER NOW</h2>
+        </div>
+        <div class="content">
+          <div class="group">
+            <label for="">Your Name:</label>
+            <input class="input" type="text" name="Name" required placeholder="Enter Your Name">
+        </div>
+        <div class="group">
+            <label for="">Phone Number:</label>
+            <input class="input" type="text" name="Number" required placeholder="Enter Your Phone Number">
+        </div>
+        <div class="group">
+          <label for="">Email:</label>
+          <input class="input" type="email" name="Email" required placeholder="Enter Your Email">
+      </div>
+      <div class="group">
+        <label for="">Date:</label>
+        <input class="input" type="date" name="Date" required >
+    </div>
+    <div class="group">
+      <label for="">Meal Type:</label>
+      <select class="input" name="Meal_Name" id="">
+      <option value="null" hidden>Select Meal</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      </select>
+  </div>
+          <div class="group">
+            <label for="">Number of Plates:</label>
+            <input class="input" type="number" name="Plates" required >
+        </div>
+        <div class="group">
+          <label for="">Delivering Address:</label>
+          <textarea class="input" type="text" rows="5" name="DeliveringAddress" required placeholder="Your address of delivering"></textarea>
+      </div>
+            <div class="group">
+                <label for="">Description:</label>
+                <textarea class="input" type="text" rows="5" name="Description" required placeholder="Write a short note"></textarea>
+            </div>
+        </div>
+        <div class="footer">
+            <input  type="submit" value="submit">
+        </div>
+    </form>
+</section>
+<!-- End Form -->
+  {% endblock contect%}

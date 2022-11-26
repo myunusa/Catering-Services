@@ -1,0 +1,60 @@
+{% load static %}
+<!-- ======= Slider Section ======= -->
+<section id="testimonials" class="meal">
+  <div class="container" data-aos="zoom-in">
+    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="testimonial-item"> <a class="nav-link scrollto" href="#portfolio">
+            <p><img src="{% static 'assets/img/slide/fod im.jpg' %}" class="testimonial-img" alt=""><h3>
+              FOOD</h3>
+            </p></a>
+          </div>
+        </div><!-- End Slider Items -->
+        <div class="swiper-slide">
+          <div class="testimonial-item"> <a class="nav-link scrollto" href="#portfolio">
+            <p><img src="{% static 'assets/img/slide/download.jfif' %}" class="testimonial-img" alt=""><h3>
+              CHICKEN SAUCE</h3>
+            </p></a>
+          </div>
+        </div><!-- End Slider Items -->
+        <div class="swiper-slide">
+          <div class="testimonial-item"> <a class="nav-link scrollto" href="#portfolio">
+            <p><img src="{% static 'assets/img/slide/DRINKS.jpg' %}" class="testimonial-img" alt=""><h3>
+              MILK DRINKS</h3>
+            </p></a>
+          </div>
+        </div><!-- End Slider Items -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item"> <a class="nav-link scrollto" href="#portfolio">
+            <p><img src="{% static 'assets/img/slide/pomo.jpg' %}" class="testimonial-img" alt=""><h3>
+              MEAT</h3>
+            </p></a>
+          </div>
+        </div><!-- End Slider Items -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item"> <a class="nav-link scrollto" href="#portfolio">
+            <p><img src="{% static 'assets/img/slide/sandwich ch.jpg' %}" class="testimonial-img" alt=""><h3>
+              SANDWICH</h3>
+            </p></a>
+          </div>
+        </div><!-- End Slider Items -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item"> <a class="nav-link scrollto" href="#portfolio">
+            <p><img src="{% static 'assets/img/slide/snack.jpg' %}" class="testimonial-img" alt=""><h3>
+              SNACKS</h3>
+            </p></a>
+          </div>
+        </div><!-- End Slider Items -->
+      </div>
+      <div class="swiper-pagination"></div>
+      <div id="gets" class="gets">
+        <a href="{% url 'Order' %}" class="btn-get-started scrollto" style=text-align:center>MAKE ORDER</a>
+        <a href="{% url 'Reservation' %}" class="btn-get-started scrollto" style=text-align:center>MAKE RESERVATION</a>
+      </div>
+    </div>
+  </div>
+</section><!-- End Slider Section -->

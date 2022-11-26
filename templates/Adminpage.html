@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Title %}SUPER ADMIN{% endblock Title %}
+ <!-- ======= Header ======= -->
+ {% block login %}
+ <header id="header" class="d-flex align-items-center">
+   <div class="container d-flex justify-content-between">
+     <div class="logo">
+    <h1 class="text-light"><img src="{% static 'assets/img/catering Logo.png' %}" alt="" class="img-fluid">CATERING SERVICES</h1>
+      </div>
+            <nav id="navbar" class="navbar">
+              <ul>
+                <li><a href="#all_iteams" class="btn-get-started scrollto" style=text-align:center>ALL ITEMS </a></li>
+                <li><a href="#reserevation" class="btn-get-started scrollto" style=text-align:center>RESERVATION </a></li>
+                <li><a href="#order" class="btn-get-started scrollto" style=text-align:center>ORDER </a></li>
+                <li><a href="#contactus" class="btn-get-started scrollto" style=text-align:center>CONTACT US </a></li>
+                <li><a href="{% url 'Logout' %}" class="btn-get-started scrollto" style=text-align:center>Logout</a></li>
+              </ul>
+          </nav>
+     <!-- .navbar -->
+   </div>
+ </header>
+ {% endblock login %}
+ <!-- End Header -->
+
+{% block contect %}
+  {% block Banner %}
+  <!-- ======= Banner Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      {% block Welcome %}
+      <div class="container">
+      <h4 class="sent-messages {{message.tags}}" style="color:rgb(253, 255, 255)">WELCOME TO ADMIN PAGE:
+        {% if messages %}
+        {% for messag in messages %}
+        {{messag|upper}}
+        {% endfor %}
+     {% endif %}
+      </h4>
+      </div>
+        <a class="nav-link scrollto" href="#all_iteams"><b style=color:#ffc451>SCROLL DROWN TO SEE THE DETAILS YOU CAN ACCESS</b></a> </h2>
+      {% endblock Welcome %}
+  </div>
+  </section>
+  <!-- End Banner -->
+  {% endblock Banner %}
+ <!-- ======= all items Section ======= -->
+<section id="all_iteams" class="allsec">
+  <div class="body">
+    <div class="title">
+          <h2>ALL ITEMS DETAILS</h2>    
+    </div>
+    <div class="content">
+      <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Category</td>
+                <td>Meal</td>
+                <td>Price</td>
+                <td>Description</td>
+                <td>Image</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+          {% for items in all %}
+            <tr>
+                <td>{{items.Name}}</td>
+                <td>{{items.Category_Name}}</td>
+                <td>{{items.Meal_Name}}</td>
+                <td>{{items.Price}}</td>
+                <td style="width: 200px; height: 80px" >{{items.Description}}</td>
+                <td class="img"><img src="{{items.Image.url}}" alt=""></td>
+                <td class="img"><a  href="{% url 'Deleteall' items.id %}" class="deletelink">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+ <!-- End all items -->
+  <!-- ======= Reservation Section ======= -->
+<section id="reserevation" class="allsec">
+  <div class="body">
+    <div class="title">
+          <h2>RESERVATION DETAILS</h2>
+         
+    </div>
+    <div class="content">
+      <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Number</td>
+                <td>Email</td>
+                <td>Meal</td>
+                <td>Date</td>
+                <td>Number of People</td>
+                <td>Description</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+          {% for reserves in reserve %}
+            <tr>
+                <td>{{reserves.Name}}</td>
+                <td>{{reserves.Number}}</td>
+                <td>{{reserves.Email}}</td>
+                <td>{{reserves.Meal_Name}}</td>
+                <td>{{reserves.Date}}</td>
+                <td>{{reserves.NumberofPeople}}</td>
+                <td style="width: 200px; height: 80px" >{{reserves.Description}}</td>
+                <td class="img"><a  href="{% url 'Deletereserve' reserves.id %}" class="deletelink">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+ <!-- End all items -->
+  <!-- ======= Order Section ======= -->
+<section id="order" class="allsec">
+  <div class="body">
+    <div class="title">
+          <h2>ORDER DETAILS</h2>
+         
+    </div>
+    <div class="content"> 
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Number</td>
+            <td>Email</td>
+            <td>Meal</td>
+            <td>Date</td>
+            <td>No. of Plates</td>
+            <td>Delivering Address</td>
+            <td>Description</td>
+            <td>Delete</td>
+        </tr>
+        </thead>
+        <tbody>
+          {% for orders in order %}
+            <tr>
+                <td>{{orders.Name}}</td>
+                <td>{{orders.Number}}</td>
+                <td>{{orders.Email}}</td>
+                <td>{{orders.Meal_Name}}</td>
+                <td>{{orders.Date}}</td>
+                <td>{{orders.Plates}}</td>
+                <td>{{orders.DeliveringAddress}}</td>
+                <td style="width: 200px; height: 80px" >{{orders.Description}}</td>
+                <td class="img"><a  href="{% url 'Deleteorder' orders.id %}" class="deletelink">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+ <!-- End Order items -->
+  <!-- ======= contact us Section ======= -->
+<section id="contactus" class="allsec">
+  <div class="body">
+    <div class="title">
+          <h2>CONTACT DETAILS</h2>
+         
+    </div>
+    <div class="content">
+      <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Number</td>
+                <td>Email</td>
+                <td>Subject</td>
+                <td>Message</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+          {% for contacts in contact %}
+            <tr>
+                <td>{{contacts.Name}}</td>
+                <td>{{contacts.Number}}</td>
+                <td>{{contacts.Email}}</td>
+                <td>{{contacts.Subject}}</td>
+                <td style="width: 200px; height: 80px" >{{contacts.Message}}</td>
+                <td class="img"><a  href="{% url 'Deletecontact' contacts.id %}" class="deletelink">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+ <!-- End contact us -->
+{% endblock %}

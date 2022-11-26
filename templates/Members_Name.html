@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Title %}MEMBERS NAME{% endblock Title %}
+{% block meallink %}
+              <li class="dropdown"><a class="nav-link scrollto" href="{% url 'Meals' %}"><span>Meals</span> <i class="bi bi-chevron-down"></i></a>
+{% endblock meallink %}
+{% block contect %}
+  {% block Banner %}
+  <!-- ======= Banner Section ======= -->
+  {% comment %} <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      {% block Welcome %}
+      {% if messages %}
+      {% for messag in messages %}
+       <div class="sent-messages"><h2>{{messag}}</h2></div>
+      {% endfor %}
+     {% endif %}
+      <h1>Name of Group "9" Members</h1>
+      <h2>To see the name of all members and their details<br/><br/>
+        <a class="nav-link scrollto" href="#all_iteams">
+        <b style=color:#ffc451>Click Here !!!</b></a></h2>
+      {% endblock Welcome %}
+    </div>
+  </section> {% endcomment %}
+  <!-- End Banner -->
+  {% endblock Banner %}
+   <!-- ======= Form Section ======= -->
+   <section id="all_iteams" class="allsec">
+    <div class="body">
+      <div class="title">
+            <h2>NAMES OF MEMBERS</h2>    
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <td>S/N</td>
+              <td>NAME</td>
+              <td>DEPARTMENT</td>
+              <td>REGISTRATION NO.</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>SULAIMAN MUSA YUNUSA</td>
+              <td>INFORMATION TECHNOLOGY</td>
+              <td>FCSIT/19/IFT/00409</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>MUSTAPHA ISMAIL KHALID</td>
+              <td>INFORMATION TECHNOLOGY</td>
+              <td>FCST/18/IFT/00141</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>MUJAHID ABDULLAHI JANTUA</td>
+              <td>INFORMATION TECHNOLOGY</td>
+              <td>FCST/18/IFT/00101</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>NURA ADAMU SAJE</td>
+              <td>COMPUTER SCIENCE</td>
+              <td>FCSIT/19/COM/00406</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>ISHAQ HASSAN</td>
+              <td>SOFTWARE ENGINEERING</td>
+              <td>FCST/18/SWE00128</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>ANAS GARBA BABA</td>
+              <td>SOFTWARE ENGINEERING</td>
+              <td>FCST/18/SWE/00124</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>ABUBAKAR IBRAHIM ABDULLAHI</td>
+              <td>SOFTWARE ENGINEERING</td>
+              <td>FCST/18/SWE/00102</td>
+            </tr>
+          </tbody>
+      </table>
+      <p style="margin-top: 10px;"><strong> <span style="color:red;"> Notice:</span> click on the logo of each page to link you to admin panel and the username = "catering", passworld = "catering"</strong></p>
+      </div>
+    </div>
+  </section>
+  
+<!-- End Form -->
+  {% endblock contect%}

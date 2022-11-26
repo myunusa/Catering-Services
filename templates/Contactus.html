@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Title %}CONTACT US{% endblock Title %}
+{% block meallink %}
+              <li class="dropdown"><a class="nav-link scrollto" href="{% url 'Meals' %}"><span>Meals</span> <i class="bi bi-chevron-down"></i></a>
+{% endblock meallink %}
+{% block contect %}
+  {% block Banner %}
+  <!-- ======= Banner Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      {% block Welcome %}
+      <h1>Welcome to Catering Services Contact Us page</h1>
+      <h2>You can Contact Us to known your feedback to us. <br/><br/><a href="#con">
+        <b style=color:#ffc451>SCROLL DROWN TO CONTACT US</b></a></h2></h2>
+      {% endblock Welcome %}
+    </div>
+  </section>
+  <!-- End Banner -->
+  {% endblock Banner %}
+ <!-- ======= Form Section ======= -->
+  <section id="con" class="con">
+    <form action="{% url 'Contact' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="Form" value="{{ request.path }}">
+    
+        <div class="title">
+            <h2>FILL YOUR DETAILS</h2>
+        </div>
+        {% if messages %}
+          {% for messag in messages %}
+           <div class="sent-messages">{{messag}}</div>
+          {% endfor %}
+       {% endif %}
+        <div class="content">
+            <div class="group">
+                <label for="">Your Name:</label>
+                <input class="input" type="text" name="Name" required placeholder="Enter Your Name">
+            </div>
+            <div class="group">
+                <label for="">Phone Number:</label>
+                <input class="input" type="text" name="Number" required placeholder="Enter Your Phone Number">
+            </div>
+            <div class="group">
+              <label for="">Email:</label>
+              <input class="input" type="email" name="Email" required placeholder="Enter Your Email">
+          </div>
+          <div class="group">
+            <label for="">Subject:</label>
+            <input class="input" type="text" name="Subject" required placeholder="Enter Your Subject">
+        </div>
+            <div class="group">
+                <label for="">Message:</label>
+                <textarea class="input" type="text" rows="5" name="Message" required placeholder="Write a short note"></textarea>
+            </div>
+        </div>
+        <div class="footer">
+            <input  type="submit" value="submit">
+        </div>
+    </form>
+</section>
+ <!-- End Banner -->
+{% endblock %}

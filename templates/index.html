@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Title %}CATERING SERVICES{% endblock Title %}
+{% block meallink %}
+            <li class="dropdown"><a class="nav-link scrollto" href="#portfolio"><span>Meals</span> <i class="bi bi-chevron-down"></i></a>
+{% endblock meallink %}
+{% block contect %}
+  {% block Banner %}
+  <!-- ======= Banner Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      {% block Welcome %}
+      <h1>Welcome to Catering Services</h1>
+      <h2>We offer and deliver good and healthy food for all different kind of citizens.<br/><br/>
+        <a class="nav-link scrollto" href="#all_iteams"><b style=color:#ffc451>CLICK HERE FOR MEMBERS NAMES</b></a>
+      </h2>
+      {% endblock Welcome %}
+      <div id="gets" class="gets">
+        <a href="{% url 'Order' %}" class="btn-get-started scrollto" style=text-align:center>MAKE ORDER</a>
+        <a href="{% url 'Reservation' %}" class="btn-get-started scrollto" style=text-align:center>MAKE RESERVATION</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Banner  -->
+  {% endblock Banner %}
+  <section id="all_iteams" class="allsec">
+    <div class="body">
+      <div class="title">
+            <h2>NAMES OF MEMBERS</h2>    
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <td>S/N</td>
+              <td>NAME</td>
+              <td>DEPARTMENT</td>
+              <td>REGISTRATION NO.</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>SULAIMAN MUSA YUNUSA</td>
+              <td>INFORMATION TECHNOLOGY</td>
+              <td>FCSIT/19/IFT/00409</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>MUSTAPHA ISMAIL KHALID</td>
+              <td>INFORMATION TECHNOLOGY</td>
+              <td>FCST/18/IFT/00141</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>MUJAHID ABDULLAHI JANTUA</td>
+              <td>INFORMATION TECHNOLOGY</td>
+              <td>FCST/18/IFT/00101</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>NURA ADAMU SAJE</td>
+              <td>COMPUTER SCIENCE</td>
+              <td>FCSIT/19/COM/00406</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>ISHAQ HASSAN</td>
+              <td>SOFTWARE ENGINEERING</td>
+              <td>FCST/18/SWE00128</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>ANAS GARBA BABA</td>
+              <td>SOFTWARE ENGINEERING</td>
+              <td>FCST/18/SWE/00124</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>ABUBAKAR IBRAHIM ABDULLAHI</td>
+              <td>SOFTWARE ENGINEERING</td>
+              <td>FCST/18/SWE/00102</td>
+            </tr>
+          </tbody>
+      </table>
+      <p style="margin-top: 10px;"><strong> <span style="color:red;"> Notice:</span> click on the logo of each page to link you to admin panel and the username = "catering", passworld = "catering"</strong></p>
+      </div>
+    </div>
+  </section>
+<!-- ======= Meals Section ======= -->
+<section id="portfolio" class="portfolio">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Meals of The Day</h2>
+      <p>Click on the Meal to See what are Available to  order or make reservations</p>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          <li data-filter=".filter-app"class="filter-active">The Threee Meals</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      {%for Meals in Meal %}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <div class="portfolio-wrap"><a href="{% url 'Meals' %}">
+          <img src="{{Meals.Image.url}}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>{{Meals.Meal_Name}}</h4>
+            <p>{{Meals.Description}}</p>
+          </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+  <div class="pagination">
+  {% if Meal.has_previous %}
+  <a href="?page=1" class="arrow">&lt;&lt;</a>
+  <a href="?page={{Meal.previous_page_number}}" class="arrow">&lt;</a>
+  {% endif %}
+
+  {% for num in Meal.paginator.page_range %}
+
+  {% if Meal.number == num %}
+  <a href="?page={{num}}" class="current num">{{num}}</a>
+  {% elif num > Meal.number|add:'-3' and num < Meal.number|add:'3' %} 
+  <a href="?page={{num}}" class="num">{{num}}</a>
+  {% endif %}
+
+  {% if Meal.has_next %}
+  <a href="?page={{Meal.next_page_number}}" class="arrow">&gt;</a>
+  <a href="?page={{Meal.paginator.num_pages}}" class="arrow">&gt;&gt;</a>
+  {% endif %}
+  {% endfor %}
+</div>
+</section><!-- End Meals Section -->
+
+ <!-- ======= Category Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>FOOD CATEGORY</h2>
+          <p>Check food categories available</p>
+        </div>
+        <div class="row">
+        {%for Categorie in Categories %}
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="{{Categorie.Image.url}}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href="{% url 'Drinks' %}"><div>Click Here To View</div></a>
+                </div>
+              </div>
+              <div class="member-info"> <h2></h2>
+                <h4>{{Categorie.Category_Name}}</h4>
+                <span><span>{{Categorie.Description}}</span></span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+        <div class="pagination">
+          {% if Categories.has_previous %}
+          <a href="?page=1" class="arrow">&lt;&lt;</a>
+          <a href="?page={{Categories.previous_page_number}}" class="arrow">&lt;</a>
+          {% endif %}
+  
+          {% for num in Categories.paginator.page_range %}
+  
+          {% if Categories.number == num %}
+          <a href="?page={{num}}" class="current num">{{num}}</a>
+          {% elif num > Categories.number|add:'-4' and num < Categories.number|add:'4' %} 
+          <a href="?page={{num}}" class="num">{{num}}</a>
+          {% endif %}
+  
+          {% if Categories.has_next %}
+          <a href="?page={{Categories.next_page_number}}" class="arrow">&gt;</a>
+          <a href="?page={{Categories.paginator.num_pages}}" class="arrow">&gt;&gt;</a>
+          {% endif %}
+  
+          {% endfor %}
+      </div>
+        </div>
+    </section><!-- End Category Section -->
+
+     <!-- ======= Testimonials Section ======= -->
+     <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/tes4.jpg' %}" class="testimonial-img" alt="">
+                <h3>Muhammed Abubakar</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/tes1.jpg' %}" class="testimonial-img" alt="">
+                <h3>Sani Salisu</h3>
+                <h4>Designer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/tes3.jpg' %}" class="testimonial-img" alt="">
+                <h3>Aisha Muhammed</h3>
+                <h4>Store Owner</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/tes5.jpg' %}" class="testimonial-img" alt="">
+                <h3>Aliyu Bashir Aliyu</h3>
+                <h4>Freelancer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/tes2.jpg' %}" class="testimonial-img" alt="">
+                <h3>Mustapha Umar</h3>
+                <h4>Entrepreneur</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+    {% endblock contect %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Title %}FOOD{% endblock Title %}
+{% block meallink %}
+              <li class="dropdown"><a class="nav-link scrollto" href="{% url 'Meals' %}"><span>Meals</span> <i class="bi bi-chevron-down"></i></a>
+{% endblock meallink %}
+{% block contect %}
+  {% block Banner %}
+  {% block Welcome %} {% endblock Welcome %}
+  {% include 'Banner.html'%}
+  {% endblock Banner %}
+<!-- ======= List of Iterms Section ======= -->
+<section id="portfolio" class="portfolio">
+  {% include 'itermnav.html' %}
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      <!-- ======= FOOD ======= -->
+      {% for foods in Food%}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <div class="portfolio-wrap">
+          <img src="{{foods.Image.url}}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>{{foods.Name}}</h4>
+            <p>{{foods.Price}}</p>
+            <p style="color: #ffc451;">{{foods.Meal_Name}}<br>{{foods.Description}}</p>
+            <div class="portfolio-links">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="pagination">
+      {% if Food.has_previous %}
+      <a href="?page=1" class="arrow">&lt;&lt;</a>
+      <a href="?page={{Food.previous_page_number}}" class="arrow">&lt;</a>
+      {% endif %}
+
+      {% for num in Food.paginator.page_range %}
+
+      {% if Food.number == num %}
+      <a href="?page={{num}}" class="current num">{{num}}</a>
+      {% elif num > Food.number|add:'-6' and num < Food.number|add:'6' %} 
+      <a href="?page={{num}}" class="num">{{num}}</a>
+      {% endif %}
+
+      {% if Food.has_next %}
+      <a href="?page={{Food.next_page_number}}" class="arrow">&gt;</a>
+      <a href="?page={{Food.paginator.num_pages}}" class="arrow">&gt;&gt;</a>
+      {% endif %}
+
+      {% endfor %}
+  </div>
+</section><!-- End  List of Iterms Section -->
+{% endblock contect %}
