@@ -21,7 +21,7 @@
  <!-- ======= Form Section ======= -->
   <section id="con" class="con">
     <form action="{% url 'Contact' %}" method="post">
-        
+        {% csrf_protect %}
         <input type="hidden" name="Form" value="{{ request.path }}">
     
         <div class="title">
