@@ -23,7 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4)!wlaho=h7(_*t30notc&i8v8k0po8rs_wx5oj20=yyx49s(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+
+if os.environ['DEBUG']:
+    print True
+else:
+    print False
 
 ALLOWED_HOSTS = ["https://catering-services.herokuapp.com","https://catering-services-production.up.railway.app",'*']
 
