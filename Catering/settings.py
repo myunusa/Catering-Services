@@ -33,6 +33,7 @@ DEBUG = False
 #     print False
 
 ALLOWED_HOSTS = ["https://catering-services.herokuapp.com","https://catering-services-production.up.railway.app",'*']
+CSRF_TRUSTED_ORIGINS =['https://catering-services-production.up.railway.app']
 
 
 # Application definition
@@ -88,6 +89,7 @@ WSGI_APPLICATION = 'Catering.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
