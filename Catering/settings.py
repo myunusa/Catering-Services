@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path, os
-import dj_database_url
-import django_heroku
+# import dj_database_url
+# import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,9 +100,9 @@ DATABASES = {
     }
 }
 
-DATABASES = {'default': dj_database_url.config()}
+# DATABASES = {'default': dj_database_url.config()}
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 
 # Password validation
